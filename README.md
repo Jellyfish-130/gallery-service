@@ -11,7 +11,7 @@
 
 ## Table of Contents
 
-1. [API Endpoints](#Server API)
+1. [Server API](#Server API)
 2. [Usage](#Usage)
 3. [Requirements](#requirements)
 4. [Development](#development)
