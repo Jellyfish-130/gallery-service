@@ -11,12 +11,12 @@
 
 ## Table of Contents
 
-1. [APIs](#Server API)
+1. [API-Endpoints](#API-Endpoints)
 2. [Usage](#Usage)
 3. [Requirements](#requirements)
 4. [Development](#development)
 
-## Server API
+## API-Endpoints
 
 
 
