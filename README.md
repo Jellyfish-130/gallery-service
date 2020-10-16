@@ -11,7 +11,7 @@
 
 ## Table of Contents
 
-1. [ServerAPI](#ServerAPI)
+1. [APIs](#Server API)
 2. [Usage](#Usage)
 3. [Requirements](#requirements)
 4. [Development](#development)
