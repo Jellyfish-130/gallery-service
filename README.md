@@ -1,19 +1,24 @@
-# Jelly-Fish: SDC - Gallery-Service
+# Jelly-Fish
 
-> This is the back-end design of the gallery component for a home rental web application.
+> System Design Capstone Project. This is the back-end capstone design of the gallery service for a premium home rental web application.
 
 ## Related Projects
 
-- https://github.com/Jellyfish-130/gallery-service
-- https://github.com/Jellyfish-130/calendar-service
-- https://github.com/Jellyfish-130/review-service
-- https://github.com/Jellyfish-130/more-places-service
+- Lim E. Nhep - https://github.com/Jellyfish-130/gallery-service
+- Catherine Straus - https://github.com/Jellyfish-130/calendar-service
+- Jacob Johnson - https://github.com/Jellyfish-130/review-service
+- Arun Kambivalappil - https://github.com/Jellyfish-130/more-places-service
 
 ## Table of Contents
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
+1. [API Endpoints](#Server API)
+2. [Usage](#Usage)
+3. [Requirements](#requirements)
+4. [Development](#development)
+
+## Server API
+
+
 
 ## Usage
 
