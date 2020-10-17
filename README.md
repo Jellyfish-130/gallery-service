@@ -60,7 +60,7 @@
 
 ### Get listings ID
 
-- GET `/api/listing/:listingId`
+- GET `/api/listings/:listingId`
 
 **Path Parameters:**
 
