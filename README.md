@@ -1,6 +1,6 @@
 # Jelly-Fish
 
-> System Design Capstone Project. This is the back-end capstone design of the gallery service for a premium home rental web application.
+> System Design Capstone Project. This is the back-end capstone design project for the gallery service component of a premium home rental web application.
 
 ## Related Projects
 
