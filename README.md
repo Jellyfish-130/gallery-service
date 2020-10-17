@@ -60,7 +60,7 @@
 
 ### Get listings ID
 
-- GET `/api/listing/:listingsId`
+- GET `/api/listing/:listingId`
 
 **Path Parameters:**
 
@@ -83,7 +83,7 @@
 
 ### Update listings
 
-- PATCH `/api/listings/:listingsId`
+- PATCH `/api/listings/:listingId`
 
 **Path Parameters:**
 
