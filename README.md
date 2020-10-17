@@ -18,8 +18,102 @@
 
 ## API-Endpoints
 
+> See below for the detailed breakdown.
 
+### Add listings
 
+- POST `/api/listings`
+
+**Success Status Code:** `201`
+
+**Returns:** JSON
+
+```json
+{
+   "_id": "5f89fac2472c0d4d43c04b91",
+    "listingID": 11,
+    "title": "Dome in the Desert in Joshua Tree",
+    "name": "Dome house",
+    "location": "Joshua Tree, California, United States",
+    ...
+}
+```
+
+### Get all listings
+
+- GET `/api/listings`
+
+**Success Status Code:** `200`
+
+**Returns:** JSON
+
+```json
+{
+  "_id": "5f89fac2472c0d4d43c04b91",
+  "listingID": 11,
+  "title": "Dome in the Desert in Joshua Tree",
+  "name": "Dome house",
+  "location": "Joshua Tree, California, United States",
+  ...
+}
+```
+
+### Get listings ID
+
+- GET `/api/listing/:listingsId`
+
+**Path Parameters:**
+
+- `listingId` listings id
+
+**Success Status Code:** `200`
+
+**Returns:** JSON
+
+```json
+{
+  "_id": "5f89fac2472c0d4d43c04b91",
+  "listingID": 11,
+  "title": "Dome in the Desert in Joshua Tree",
+  "name": "Dome house",
+  "location": "Joshua Tree, California, United States",
+  ...
+}
+```
+
+### Update listings
+
+- PATCH `/api/listings/:listingsId`
+
+**Path Parameters:**
+
+- `listingsId` listings id
+
+**Success Status Code:** `204`
+
+**Returns:** JSON
+
+```json
+{
+  "success": true,
+  "updatedCount": 1
+}
+```
+
+### Delete all dates -- TBD
+
+- DELETE `/api/listings`
+
+**Success Status Code:** `204`
+
+**Returns:** JSON
+
+```json
+{
+  "success": true,
+  "deletedCount": 100
+}
+```
 ## Usage
 
 > Some usage instructions.
@@ -79,98 +173,4 @@ From within the root directory:
 
 ```sh
 npm install
-```
-
-## API Endpoints
-
-### Add dates -- TBD
-
-- POST `/api/booking/listings`
-
-**Success Status Code:** `201`
-
-**Returns:** JSON
-
-```json
-{
-  "_id": "5f875e9c2eccda0e6ea0d4f5",
-  "date": "2020-10-01T13:00:00.000Z",
-  "booked": false,
-  "price": 249,
-  "minimumNights": 1
-}
-```
-
-### Get all dates -- TBD
-
-- GET `/api/booking/listings`
-
-**Success Status Code:** `200`
-
-**Returns:** JSON
-
-```json
-{
-  "_id": "5f874671d0a9767a5e69ab37",
-  "date": "2020-10-01T13:00:00.000Z",
-  "booked": false,
-  "price": 248,
-  "minimumNights": 1
-}
-```
-
-### Get date ID -- TBD
-
-- GET `/api/booking/listing/:listingId`
-
-**Path Parameters:**
-
-- `listingId` date id
-
-**Success Status Code:** `200`
-
-**Returns:** JSON
-
-```json
-{
-  "_id": "5f874672d0a9767a5e69eb8d",
-  "date": "2020-10-01T13:00:00.000Z",
-  "booked": true,
-  "price": 119,
-  "minimumNights": 1
-}
-```
-
-### Update date availability -- TBD
-
-- PATCH `/api/booking/listing/reservation/:listingId`
-
-**Path Parameters:**
-
-- `listingId` date id
-
-**Success Status Code:** `204`
-
-**Returns:** JSON
-
-```json
-{
-  "success": true,
-  "updatedCount": 1
-}
-```
-
-### Delete all dates -- TBD
-
-- DELETE `/api/booking/listings`
-
-**Success Status Code:** `204`
-
-**Returns:** JSON
-
-```json
-{
-  "success": true,
-  "deletedCount": 100
-}
 ```
