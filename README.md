@@ -64,7 +64,7 @@
 
 **Path Parameters:**
 
-- `listingId` listings id
+- `listingId` listing id
 
 **Success Status Code:** `200`
 
@@ -87,7 +87,7 @@
 
 **Path Parameters:**
 
-- `listingsId` listings id
+- `listingsId` listing id
 
 **Success Status Code:** `204`
 
