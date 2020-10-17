@@ -8,13 +8,14 @@ const app = express();
 
 //MIDDLEWARE
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 app.use('/', express.static(__dirname + '/client/dist'))
 
 //MONGOOSE CONNECTION
-mongoose.connect('mongodb://172.17.0.3:27017/airbnb_plus', { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
+// mongodb://172.17.0.3:27017/airbnb_plus
+mongoose.connect('mongodb://localhost/airbnb_plus', { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
     console.log('MongoDB Connected!');
 }).catch((err) => {
     console.log('MongoDB Connection Error');
@@ -29,7 +30,7 @@ app.use('/favorites/', favoritesRoute);
 
 const PORT = 3001;
 app.listen(PORT, (err) => {
-    if (err){
+    if (err) {
         throw err;
     } else {
         console.log(`Server started on PORT: ${PORT}`);

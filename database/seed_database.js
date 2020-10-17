@@ -3,7 +3,8 @@ const { Listings } = require('./listings');
 const { Favorites } = require('./favorites');
 
 //MONGOOSE CONNECTION
-mongoose.connect('mongodb://172.17.0.3:27017/airbnb_plus', { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
+// //172.17.0.3:27017/airbnb_plus
+mongoose.connect('mongodb://localhost/airbnb_plus', { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
     console.log('MongoDB Connected!');
     seedAll();
 }).catch((err) => {
@@ -44,7 +45,7 @@ const sampleSavedList = [
     {
         userID: 1,
         savedList: [
-            {   
+            {
                 time: 'Any time',
                 name: 'Spring Getaway',
                 stay: 'Nothing saved yet',
@@ -71,17 +72,17 @@ const sampleSavedList = [
         ]
     }
 ]
-  
+
 
 //SEEDING FUNCTION
-async function seedAll(){
+async function seedAll() {
     try {
         await mongoose.connection.db.dropDatabase();
-        for(let i=0; i<sampleListings.length; i++){
+        for (let i = 0; i < sampleListings.length; i++) {
             const newListing = new Listings(sampleListings[i]);
             await newListing.save();
         }
-        for(let i=0; i<sampleSavedList.length; i++){
+        for (let i = 0; i < sampleSavedList.length; i++) {
             const newListing = new Favorites(sampleSavedList[i]);
             await newListing.save();
         }
