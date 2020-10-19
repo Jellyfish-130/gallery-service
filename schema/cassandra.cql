@@ -4,7 +4,7 @@ CREATE KEYSPACE gallery_service WITH REPLICATION = { 'class' : 'SimpleStrategy',
 
 USE gallery_service;
 
-CREATE TABLE IF NOT EXISTS listings (
+CREATE TABLE IF NOT EXISTS listings_by_listing_id (
   listing_id uuid,
   title text,
   listing_name text,
@@ -19,20 +19,20 @@ CREATE TABLE IF NOT EXISTS listings (
   PRIMARY KEY(listing_id)
 )
 
-CREATE TABLE IF NOT EXISTS feature_photos (
-  feature_photo_id uuid,
+CREATE TABLE IF NOT EXISTS feature_photos_by_listing_id (
   listing_id uuid,
+  feature_photo_id uuid,
   photo_1_url text,
   photo_2_url text,
-  PRIMARY KEY(feature_photo_id, listing_id)
+  PRIMARY KEY(listing_id, feature_photo_id)
 )
 
-CREATE TABLE IF NOT EXISTS photos (
-  photo_id uuid,
+CREATE TABLE IF NOT EXISTS photos_by_listing_id (
   listing_id uuid,
   room_id uuid,
+  photo_id uuid,
   room_name text,
   photo_url text,
   photo_caption text,
-  PRIMARY KEY(photo_id, (listing_id, room_id))
+  PRIMARY KEY(listing_id, room_id)
 )
