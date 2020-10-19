@@ -22,7 +22,11 @@
 
 ### Add listings
 
-- POST `/api/listings`
+- POST `/api/listings/listing_id`
+
+**Path Parameters:**
+
+- `listing_id` listing id
 
 **Success Status Code:** `201`
 
@@ -30,11 +34,6 @@
 
 ```json
 {
-   "_id": "5f89fac2472c0d4d43c04b91",
-    "listingID": 11,
-    "title": "Dome in the Desert in Joshua Tree",
-    "name": "Dome house",
-    "location": "Joshua Tree, California, United States",
     ...
 }
 ```
@@ -49,22 +48,17 @@
 
 ```json
 {
-  "_id": "5f89fac2472c0d4d43c04b91",
-  "listingID": 11,
-  "title": "Dome in the Desert in Joshua Tree",
-  "name": "Dome house",
-  "location": "Joshua Tree, California, United States",
   ...
 }
 ```
 
 ### Get listings ID
 
-- GET `/api/listings/:listingId`
+- GET `/api/listings/:listing_id`
 
 **Path Parameters:**
 
-- `listingId` listing id
+- `listing_id` listing id
 
 **Success Status Code:** `200`
 
@@ -72,37 +66,37 @@
 
 ```json
 {
-  "_id": "5f89fac2472c0d4d43c04b91",
-  "listingID": 11,
-  "title": "Dome in the Desert in Joshua Tree",
-  "name": "Dome house",
-  "location": "Joshua Tree, California, United States",
   ...
 }
 ```
 
-### Update listings
+### Update listings a specific photo
 
-- PATCH `/api/listings/:listingId`
+- PATCH `/api/listings/:listing_id/photos/:photo_id`
 
 **Path Parameters:**
 
-- `listingsId` listing id
+- `listings_id` listing id
+- `photo_id` photo id
 
-**Success Status Code:** `204`
+**Success Status Code:** `200`
 
-**Returns:** JSON
+**Request Body:** JSON
 
 ```json
 {
-  "success": true,
-  "updatedCount": 1
+   ...
 }
 ```
 
-### Delete all dates -- TBD
+### Delete a specific photo
 
-- DELETE `/api/listings`
+- DELETE `/api/listings/:listing_id/photos/:photo_id`
+
+**Path Parameters:**
+
+-`listing_id` listing id
+-`photo_id` photo id
 
 **Success Status Code:** `204`
 
@@ -111,7 +105,7 @@
 ```json
 {
   "success": true,
-  "deletedCount": 100
+  "deletedCount": 1
 }
 ```
 ## Usage
