@@ -52,20 +52,3 @@ CREATE TABLE IF NOT EXISTS gallery_service.photos (
   photo_url TINYTEXT,
   photo_caption varchar(50)
 )
-
--- Might need another table => /api/listings/rooms/room_id
-
-
--- Notes on the request
-
--- POST -> key:value => key: datatype
--- Status Code 201
--- Request Body
-
--- GET -> /api/listings --> Remove
-
--- GET -> focus on specific listing with datatype with full response
-
--- PATCH -> keep it as is => spend the request body
-
--- DELETE -> delete one listing
