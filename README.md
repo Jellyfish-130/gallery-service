@@ -44,6 +44,10 @@
 
 **Success Status Code:** `200`
 
+***Example*
+
+`/api/listings/...`
+
 **Returns:** JSON
 
 ```json
@@ -62,6 +66,10 @@
 
 **Success Status Code:** `200`
 
+***Example*
+
+`/api/listings/...`
+
 **Returns:** JSON
 
 ```json
@@ -70,7 +78,7 @@
 }
 ```
 
-### Update listings a specific photo
+### Update a specific photo in `listings`
 
 - PATCH `/api/listings/:listing_id/photos/:photo_id`
 
@@ -81,6 +89,10 @@
 
 **Success Status Code:** `200`
 
+***Example*
+
+`/api/listings/...`
+
 **Request Body:** JSON
 
 ```json
@@ -89,7 +101,7 @@
 }
 ```
 
-### Delete a specific photo
+### Delete a specific photo from `listings`
 
 - DELETE `/api/listings/:listing_id/photos/:photo_id`
 
@@ -99,6 +111,10 @@
 -`photo_id` photo id
 
 **Success Status Code:** `204`
+
+***Example*
+
+`/api/listings/...`
 
 **Returns:** JSON
 
