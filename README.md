@@ -78,7 +78,7 @@
 }
 ```
 
-### Update a specific photo in `listings`
+### Update a specific photo to `listings`
 
 - PATCH `/api/listings/:listing_id/photos/:photo_id`
 
