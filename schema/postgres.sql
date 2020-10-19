@@ -1,37 +1,71 @@
 -- Setting up Postgres Schema of a Gallery Service component for a premium rental web application
 
-DROP DATABASE IF EXISTS jellyfish130;
+DROP DATABASE IF EXISTS gallery_service;
 
-CREATE DATABASE jellyfish130;
+CREATE DATABASE gallery_service;
 
--- Use `jellyfish130` database
+-- Use `gallery_service` database
 
-\c jellyfish130;
+\c gallery_service;
 
 -- Add constraints to each field
 
-CREATE TABLE IF NOT EXISTS listings (
+-- Create listings table -- ADD to Ratings CHECK (4.0 < rating <= 5.0)
+
+CREATE TABLE IF NOT EXISTS gallery_service.listings (
   id SERIAL PRIMARY KEY,
-  title varchar(30),
-  listing_name varchar(30),
-  listing_location varchar(30),
-  listing_description text,
-  quote text,
+  title varchar(50),
+  listing_name varchar(50),
+  rating numeric(2,2),
+  num_reviews smallint not null,
+  superhost boolean,
+  listing_location varchar(50),
   hostname varchar(30),
-  rating varchar(5),
-  guests integer not null
+  host_avatar_url TINYTEXT,
+  share boolean,
+  save_feature boolean
 )
 
-CREATE TABLE IF NOT EXISTS rooms (
+-- Create feature_photos table
+
+CREATE TABLE IF NOT EXISTS gallery_service.feature_photos (
+  feature_photo_id SERIAL PRIMARY KEY,
+  listing_id integer not null references gallery_service.listings(id),
+  photo_1_url TINYTEXT,
+  photo_2_url TINYTEXT
+)
+
+-- Create rooms table --> minimum of three rooms per listing
+
+CREATE TABLE IF NOT EXISTS gallery_service.rooms (
   room_id SERIAL PRIMARY KEY,
-  rooms ARRAY[8]  <=== Living, Bedroom, bathroom
+  listing_id integer not null references gallery_service.listings(id),
+  room_name varchar(30)
+)
+
+-- Create photos table --> minimum of ten photos per listing
+
+CREATE TABLE IF NOT EXISTS gallery_service.photos (
+  photo_id SERIAL PRIMARY KEY,
+  listing_id integer not null references gallery_service.listings(id),
+  room_id integer not null references gallery_service.rooms(room_id),
+  photo_url TINYTEXT,
+  photo_caption varchar(50)
 )
 
 -- Might need another table => /api/listings/rooms/room_id
 
-CREATE TABLE IF NOT EXISTS galleries (
-  gallery_id SERIAL PRIMARY KEY,
-  featured ARRAY[3],
-  listing_id integer references listings(id),
-  room_id integer references rooms(room_id)
-)
+
+-- Notes on the request
+
+-- POST -> key:value => key: datatype
+-- Status Code 201
+-- Request Body
+
+-- GET -> /api/listings --> Remove
+
+-- GET -> focus on specific listing with datatype with full response
+
+-- PATCH -> keep it as is => spend the request body
+
+-- DELETE -> delete one listing
