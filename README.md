@@ -20,7 +20,7 @@
 
 > See below for the detailed breakdown.
 
-### Add listings
+### Add a specific listing to `listings`
 
 - POST `/api/listings/listing_id`
 
@@ -38,7 +38,7 @@
 }
 ```
 
-### Get all listings
+### Get all `listings`
 
 - GET `/api/listings`
 
@@ -56,7 +56,7 @@
 }
 ```
 
-### Get listings ID
+### Get a specific listing from `listings`
 
 - GET `/api/listings/:listing_id`
 
