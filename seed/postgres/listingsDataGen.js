@@ -1,21 +1,24 @@
 const faker = require('faker');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+const recordsFile = require('./records.js');
 
 const listingsDataGen = (records) => {
-  let listings = [];
-  for (let i = 0; i < records; i++) {
-    let listingTitle = faker.company.bsAdjective() + ' ' + faker.company.bsNoun();
-    let listingName = faker.company.bsBuzz();
-    let listingRating = faker.random.number({ min: 4, max: 4, precision: 0.5 });
-    let listingReviews = faker.random.number({ min: 50, max: 2020 });
-    let isSuperHost = faker.random.boolean();
-    let listingLocation = faker.address.city() + ', ' + faker.address.stateAbbr();
-    let listingHostName = faker.name.firstName() + ' ' + faker.name.lastName();
-    let listing_host_avatar = faker.image.avatar();
-    let listingShareFeature = faker.random.boolean();
-    let listingSaveFeature = faker.random.boolean();
 
-    let listingEntry = {
+  const listings = [];
+  for (let i = 1; i <= records; i++) {
+    const listingTitle = faker.company.bsAdjective() + ' ' + faker.company.bsNoun();
+    const listingName = faker.company.bsBuzz();
+    const listingRating = faker.random.number({ min: 4, max: 4, precision: 0.5 });
+    const listingReviews = faker.random.number({ min: 50, max: 2020 });
+    const isSuperHost = faker.random.boolean();
+    const listingLocation = faker.address.city() + ', ' + faker.address.stateAbbr();
+    const listingHostName = faker.name.firstName() + ' ' + faker.name.lastName();
+    const listing_host_avatar = faker.image.avatar();
+    const listingShareFeature = faker.random.boolean();
+    const listingSaveFeature = faker.random.boolean();
+
+    const listingEntry = {
+      id: i,
       title: listingTitle,
       listing_name: listingName,
       rating: listingRating,
@@ -28,6 +31,14 @@ const listingsDataGen = (records) => {
       save_feature: listingSaveFeature,
     };
     listings.push(listingEntry);
+
+    if (i === 1000) {
+      console.log(i);
+    } else if (i === 10000) {
+      console.log(i);
+    } else if (i === records) {
+      console.log('Records Created: ', i)
+    }
   }
   return listings;
 };
@@ -35,6 +46,7 @@ const listingsDataGen = (records) => {
 const csvWriter = createCsvWriter({
   path: "./sample_csv/listings.csv",
   header: [
+    { id: "id", title: "id" },
     { id: "title", title: "title" },
     { id: "listing_name", title: "listing_name" },
     { id: "rating", title: "rating" },
@@ -48,13 +60,15 @@ const csvWriter = createCsvWriter({
   ],
 });
 
-const listingsData = listingsDataGen(25);
+const listingsData = listingsDataGen(recordsFile.listingRecords);
 
 csvWriter.writeRecords(listingsData)
   .then(() => {
-    console.log("listingsDataGen Complete");
+    console.log("path: ./sample_csv/listings.csv");
+    console.log("listingsDataGen.js Almost Complete!");
+    console.log("listingsDataGen.js Generated!");
   })
   .catch((error) => {
-    console.log('The error is: ', error);
+    console.log('Error Issues: ', error);
   });
 
