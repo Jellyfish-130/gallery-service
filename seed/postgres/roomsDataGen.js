@@ -4,14 +4,6 @@ const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const roomsDataGen = (records) => {
   const rooms = [];
   for (let i = 1; i <= records; i++) {
-    i === 1000
-      ? console.log(i)
-      : i === 10000
-        ? console.log(i)
-        : i === 100000
-          ? console.log(i)
-          : i === records
-            ? console.log('Records Created: ', records);
 
     const listingId = faker.random.number({ min: 1, max: records });
     const randomRoom = ['Living room', 'Full kitchen', 'Bedroom', 'Full bathroom 2', 'Full bathroom 1', 'Common space', 'Exterior', 'Outdoor space'];
@@ -23,6 +15,14 @@ const roomsDataGen = (records) => {
       room_name: roomName,
     };
     rooms.push(roomsEntry);
+
+    if (i === 1000) {
+      console.log(i);
+    } else if (i === 10000) {
+      console.log(i);
+    } else if (i === records) {
+      console.log('Records Created: ', i)
+    }
   };
   return rooms;
 };
@@ -40,6 +40,7 @@ const roomsData = roomsDataGen(25);
 
 csvWriter.writeRecords(roomsData)
   .then(() => {
+    console.log("path: ./sample_csv/rooms.csv");
     console.log("roomsDataGen.js Almost Complete!");
     console.log("roomsDataGen.js Generated!");
   })

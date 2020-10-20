@@ -5,16 +5,8 @@ const featurePhotosDataGen = (records) => {
 
   const featurePhotos = [];
   for (let i = 1; i <= records; i++) {
-    i === 1000
-      ? console.log(i)
-      : i === 10000
-        ? console.log(i)
-        : i === 100000
-          ? console.log(i)
-          : i === records
-            ? console.log('Records Created: ', records);
 
-    const listingId = faker.random.number({ min: 1, max: records });
+    const listingId = faker.random.number({ min: 1, max: records })
     const path = ['a', 'b', 'c'];
     const featurePhoto_1 = `https://hackreactor-restaurant-images.s3-us-west-2.amazonaws.com/newseed/${faker.random.number({ min: 1, max: 50 }) + path[faker.random.number({ min: 1, max: 3 })]}.jpg`;
     const featurePhoto_2 = `https://hackreactor-restaurant-images.s3-us-west-2.amazonaws.com/newseed/${faker.random.number({ min: 1, max: 50 }) + path[faker.random.number({ min: 1, max: 3 })]}.jpg`;
@@ -26,6 +18,14 @@ const featurePhotosDataGen = (records) => {
       photo_2_url: featurePhoto_2,
     };
     featurePhotos.push(featurePhotosEntry);
+
+    if (i === 1000) {
+      console.log(i);
+    } else if (i === 10000) {
+      console.log(i);
+    } else if (i === records) {
+      console.log('Records Created: ', i)
+    }
   };
   return featurePhotos;
 };
@@ -44,6 +44,7 @@ const featurePhotosData = featurePhotosDataGen(25);
 
 csvWriter.writeRecords(featurePhotosData)
   .then(() => {
+    console.log("path: ./sample_csv/feature_photos.csv");
     console.log("featurePhotosDataGen.js Almost Complete!");
     console.log("featurePhotosDataGen.js Generated!");
   })

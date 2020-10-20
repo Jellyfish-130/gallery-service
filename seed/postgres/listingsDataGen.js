@@ -5,15 +5,6 @@ const listingsDataGen = (records) => {
 
   const listings = [];
   for (let i = 1; i <= records; i++) {
-    i === 1000
-      ? console.log(i)
-      : i === 10000
-        ? console.log(i)
-        : i === 100000
-          ? console.log(i)
-          : i === records
-            ? console.log('Records Created: ', records);
-
     const listingTitle = faker.company.bsAdjective() + ' ' + faker.company.bsNoun();
     const listingName = faker.company.bsBuzz();
     const listingRating = faker.random.number({ min: 4, max: 4, precision: 0.5 });
@@ -39,6 +30,14 @@ const listingsDataGen = (records) => {
       save_feature: listingSaveFeature,
     };
     listings.push(listingEntry);
+
+    if (i === 1000) {
+      console.log(i);
+    } else if (i === 10000) {
+      console.log(i);
+    } else if (i === records) {
+      console.log('Records Created: ', i)
+    }
   }
   return listings;
 };
@@ -64,6 +63,7 @@ const listingsData = listingsDataGen(25);
 
 csvWriter.writeRecords(listingsData)
   .then(() => {
+    console.log("path: ./sample_csv/listings.csv");
     console.log("listingsDataGen.js Almost Complete!");
     console.log("listingsDataGen.js Generated!");
   })
