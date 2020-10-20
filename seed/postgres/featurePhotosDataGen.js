@@ -1,6 +1,6 @@
 const faker = require('faker');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
-const records = require('./records.js');
+const recordsFile = require('./records.js');
 
 const featurePhotosDataGen = (records) => {
 
@@ -41,7 +41,7 @@ const csvWriter = createCsvWriter({
   ],
 });
 
-const featurePhotosData = featurePhotosDataGen(25);
+const featurePhotosData = featurePhotosDataGen(recordsFile.featurePhotosRecords);
 
 csvWriter.writeRecords(featurePhotosData)
   .then(() => {

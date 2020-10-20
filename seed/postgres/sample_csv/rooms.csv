@@ -1,26 +1,26 @@
 room_id,listing_id,room_name
-1,24,Common space
-2,16,Exterior
-3,25,Full kitchen
-4,25,Full kitchen
-5,7,Common space
-6,16,
-7,16,Common space
-8,4,Exterior
-9,8,Full bathroom 1
-10,13,Bedroom
-11,7,Outdoor space
-12,22,Full bathroom 2
-13,2,Full bathroom 1
-14,6,Full bathroom 2
-15,15,Full bathroom 1
-16,22,Outdoor space
-17,9,Full bathroom 2
-18,23,Outdoor space
-19,18,Outdoor space
-20,13,Common space
-21,22,
-22,5,Full kitchen
-23,20,Exterior
-24,17,Full bathroom 2
-25,19,Exterior
+1,12,Outdoor space
+2,6,Bedroom
+3,20,Outdoor space
+4,16,Full bathroom 1
+5,21,Full kitchen
+6,2,Exterior
+7,24,Exterior
+8,19,Living room
+9,24,Common space
+10,14,Full bathroom 2
+11,19,Outdoor space
+12,7,Bedroom
+13,21,Living room
+14,20,Full bathroom 1
+15,4,Full bathroom 2
+16,16,Full bathroom 1
+17,11,Full bathroom 2
+18,11,Full bathroom 1
+19,23,Common space
+20,11,Living room
+21,2,Full bathroom 1
+22,23,Full bathroom 1
+23,17,Living room
+24,17,Common space
+25,24,Common space

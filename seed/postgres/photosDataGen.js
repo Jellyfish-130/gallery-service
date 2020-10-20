@@ -1,6 +1,6 @@
 const faker = require('faker');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
-const records = require('./records.js');
+const recordsFile = require('./records.js');
 
 const photosDataGen = (records) => {
   const photos = [];
@@ -35,13 +35,15 @@ const photosDataGen = (records) => {
 const csvWriter = createCsvWriter({
   path: "./sample_csv/photos.csv",
   header: [
-    { id: "room_id", title: "room_id" },
+    { id: "photo_id", title: "photo_id" },
     { id: "listing_id", title: "listing_id" },
-    { id: "room_name", title: "room_name" },
+    { id: "room_id", title: "room_id" },
+    { id: "photo_url", title: "photo_url" },
+    { id: "photo_caption", title: "photo_caption" },
   ],
 });
 
-const photosData = photosDataGen(25);
+const photosData = photosDataGen(recordsFile.photoRecords);
 
 csvWriter.writeRecords(photosData)
   .then(() => {

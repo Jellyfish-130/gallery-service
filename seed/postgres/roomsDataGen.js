@@ -1,6 +1,6 @@
 const faker = require('faker');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
-const records = require('./records.js');
+const recordsFile = require('./records.js');
 
 const roomsDataGen = (records) => {
   const rooms = [];
@@ -8,7 +8,7 @@ const roomsDataGen = (records) => {
 
     const listingId = faker.random.number({ min: 1, max: records });
     const randomRoom = ['Living room', 'Full kitchen', 'Bedroom', 'Full bathroom 2', 'Full bathroom 1', 'Common space', 'Exterior', 'Outdoor space'];
-    const roomName = randomRoom[faker.random.number({ min: 1, max: randomRoom.length })];
+    const roomName = randomRoom[faker.random.number({ min: 0, max: randomRoom.length - 1 })];
 
     const roomsEntry = {
       room_id: i,
@@ -37,7 +37,7 @@ const csvWriter = createCsvWriter({
   ],
 });
 
-const roomsData = roomsDataGen(25);
+const roomsData = roomsDataGen(recordsFile.roomRecords);
 
 csvWriter.writeRecords(roomsData)
   .then(() => {
