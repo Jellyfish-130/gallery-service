@@ -1,5 +1,6 @@
 const faker = require('faker');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+const records = require('./records.js');
 
 const featurePhotosDataGen = (records) => {
 
@@ -8,8 +9,8 @@ const featurePhotosDataGen = (records) => {
 
     const listingId = faker.random.number({ min: 1, max: records })
     const path = ['a', 'b', 'c'];
-    const featurePhoto_1 = `https://hackreactor-restaurant-images.s3-us-west-2.amazonaws.com/newseed/${faker.random.number({ min: 1, max: 50 }) + path[faker.random.number({ min: 1, max: 3 })]}.jpg`;
-    const featurePhoto_2 = `https://hackreactor-restaurant-images.s3-us-west-2.amazonaws.com/newseed/${faker.random.number({ min: 1, max: 50 }) + path[faker.random.number({ min: 1, max: 3 })]}.jpg`;
+    const featurePhoto_1 = `https://hackreactor-restaurant-images.s3-us-west-2.amazonaws.com/newseed/${faker.random.number({ min: 1, max: 50 }) + path[faker.random.number({ min: 0, max: 2 })]}.jpg`;
+    const featurePhoto_2 = `https://hackreactor-restaurant-images.s3-us-west-2.amazonaws.com/newseed/${faker.random.number({ min: 1, max: 50 }) + path[faker.random.number({ min: 0, max: 2 })]}.jpg`;
 
     const featurePhotosEntry = {
       feature_photo_id: i,

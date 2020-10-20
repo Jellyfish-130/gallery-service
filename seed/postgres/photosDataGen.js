@@ -1,5 +1,6 @@
 const faker = require('faker');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+const records = require('./records.js');
 
 const photosDataGen = (records) => {
   const photos = [];
@@ -8,7 +9,7 @@ const photosDataGen = (records) => {
     const listingId = faker.random.number({ min: 1, max: records });
     const roomId = faker.random.number({ min: 1, max: records });
     const path = ['a', 'b', 'c'];
-    const photo = `https://hackreactor-restaurant-images.s3-us-west-2.amazonaws.com/newseed/${faker.random.number({ min: 1, max: 50 }) + path[faker.random.number({ min: 1, max: 3 })]}.jpg`;
+    const photo = `https://hackreactor-restaurant-images.s3-us-west-2.amazonaws.com/newseed/${faker.random.number({ min: 1, max: 50 }) + path[faker.random.number({ min: 0, max: 2 })]}.jpg`;
     const photoCaption = faker.lorem.sentence();
 
     const photosEntry = {
