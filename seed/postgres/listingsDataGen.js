@@ -8,7 +8,7 @@ const listingsDataGen = (records) => {
   for (let i = 1; i <= records; i++) {
     const listingTitle = faker.company.bsAdjective() + ' ' + faker.company.bsNoun();
     const listingName = faker.company.bsBuzz();
-    const listingRating = faker.random.number({ min: 4, max: 4, precision: 0.5 });
+    const listingRating = faker.random.number({ min: 4, max: 5, precision: 0.5 });
     const listingReviews = faker.random.number({ min: 50, max: 2020 });
     const isSuperHost = faker.random.boolean();
     const listingLocation = faker.address.city() + ', ' + faker.address.stateAbbr();
@@ -18,7 +18,7 @@ const listingsDataGen = (records) => {
     const listingSaveFeature = faker.random.boolean();
 
     const listingEntry = {
-      id: i,
+      listing_id: i,
       title: listingTitle,
       listing_name: listingName,
       rating: listingRating,
@@ -46,7 +46,7 @@ const listingsDataGen = (records) => {
 const csvWriter = createCsvWriter({
   path: "./sample_csv/listings.csv",
   header: [
-    { id: "id", title: "id" },
+    { id: "listing_id", title: "listing_id" },
     { id: "title", title: "title" },
     { id: "listing_name", title: "listing_name" },
     { id: "rating", title: "rating" },
