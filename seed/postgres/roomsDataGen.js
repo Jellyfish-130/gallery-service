@@ -1,12 +1,12 @@
 const faker = require('faker');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
-const recordsFile = require('./records.js');
+const postgreSQLSeed = require('./postgreSQLSeed.js');
 
-const roomsDataGen = (records) => {
+const roomsDataGen = (start, end, foreignStart, foreignEnd) => {
   const rooms = [];
-  for (let i = 1; i <= records; i++) {
+  for (let i = start; i <= end; i++) {
 
-    const listingId = faker.random.number({ min: 1, max: records });
+    const listingId = faker.random.number({ min: foreignStart, max: foreignEnd });
     const randomRoom = ['Living room', 'Full kitchen', 'Bedroom', 'Full bathroom 2', 'Full bathroom 1', 'Common space', 'Exterior', 'Outdoor space'];
     const roomName = randomRoom[faker.random.number({ min: 0, max: randomRoom.length - 1 })];
 
@@ -17,11 +17,11 @@ const roomsDataGen = (records) => {
     };
     rooms.push(roomsEntry);
 
-    if (i === 1000) {
+    if (i === (end / 4)) {
       console.log(i);
-    } else if (i === 10000) {
+    } else if (i === (end / 2)) {
       console.log(i);
-    } else if (i === records) {
+    } else if (i === end) {
       console.log('Records Created: ', i)
     }
   };
@@ -29,7 +29,7 @@ const roomsDataGen = (records) => {
 };
 
 const csvWriter = createCsvWriter({
-  path: "./sample_csv/rooms.csv",
+  path: "./csv/rooms.csv",
   header: [
     { id: "room_id", title: "room_id" },
     { id: "listing_id", title: "listing_id" },
@@ -37,11 +37,11 @@ const csvWriter = createCsvWriter({
   ],
 });
 
-const roomsData = roomsDataGen(recordsFile.roomRecords);
+const roomsData = roomsDataGen(postgreSQLSeed.roomStart, postgreSQLSeed.roomEnd, postgreSQLSeed.foreignListingStart, postgreSQLSeed.foreignListingEnd);
 
 csvWriter.writeRecords(roomsData)
   .then(() => {
-    console.log("path: ./sample_csv/rooms.csv");
+    console.log("path: .seed/postgres/csv/rooms.csv");
     console.log("roomsDataGen.js Almost Complete!");
     console.log("roomsDataGen.js Generated!");
   })

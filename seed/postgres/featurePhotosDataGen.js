@@ -1,13 +1,13 @@
 const faker = require('faker');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
-const recordsFile = require('./records.js');
+const postgreSQLSeed = require('./postgreSQLSeed.js');
 
-const featurePhotosDataGen = (records) => {
+const featurePhotosDataGen = (start, end, foreignStart, foreignEnd) => {
 
   const featurePhotos = [];
-  for (let i = 1; i <= records; i++) {
+  for (let i = start; i <= end; i++) {
 
-    const listingId = faker.random.number({ min: 1, max: records })
+    const listingId = faker.random.number({ min: foreignStart, max: foreignEnd })
     const path = ['a', 'b', 'c'];
     const featurePhoto_1 = `https://hackreactor-restaurant-images.s3-us-west-2.amazonaws.com/newseed/${faker.random.number({ min: 1, max: 50 }) + path[faker.random.number({ min: 0, max: 2 })]}.jpg`;
     const featurePhoto_2 = `https://hackreactor-restaurant-images.s3-us-west-2.amazonaws.com/newseed/${faker.random.number({ min: 1, max: 50 }) + path[faker.random.number({ min: 0, max: 2 })]}.jpg`;
@@ -20,11 +20,11 @@ const featurePhotosDataGen = (records) => {
     };
     featurePhotos.push(featurePhotosEntry);
 
-    if (i === 1000) {
+    if (i === (end / 4)) {
       console.log(i);
-    } else if (i === 10000) {
+    } else if (i === (end / 2)) {
       console.log(i);
-    } else if (i === records) {
+    } else if (i === end) {
       console.log('Records Created: ', i)
     }
   };
@@ -32,7 +32,7 @@ const featurePhotosDataGen = (records) => {
 };
 
 const csvWriter = createCsvWriter({
-  path: "./sample_csv/feature_photos.csv",
+  path: "./csv/feature_photos.csv",
   header: [
     { id: "feature_photo_id", title: "feature_photo_id" },
     { id: "listing_id", title: "listing_id" },
@@ -41,11 +41,11 @@ const csvWriter = createCsvWriter({
   ],
 });
 
-const featurePhotosData = featurePhotosDataGen(recordsFile.featurePhotosRecords);
+const featurePhotosData = featurePhotosDataGen(postgreSQLSeed.featurePhotoStart, postgreSQLSeed.featurePhotoEnd, postgreSQLSeed.foreignListingStart, postgreSQLSeed.foreignListingEnd);
 
 csvWriter.writeRecords(featurePhotosData)
   .then(() => {
-    console.log("path: ./sample_csv/feature_photos.csv");
+    console.log("path: ./seed/postgres/csv/feature_photos.csv");
     console.log("featurePhotosDataGen.js Almost Complete!");
     console.log("featurePhotosDataGen.js Generated!");
   })

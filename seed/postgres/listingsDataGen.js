@@ -1,11 +1,12 @@
 const faker = require('faker');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
-const recordsFile = require('./records.js');
+const postgreSQLSeed = require('./postgreSQLSeed.js');
 
-const listingsDataGen = (records) => {
+const listingsDataGen = (start, end) => {
 
   const listings = [];
-  for (let i = 1; i <= records; i++) {
+  for (let i = start; i <= end; i++) {
+
     const listingTitle = faker.company.bsAdjective() + ' ' + faker.company.bsNoun();
     const listingName = faker.company.bsBuzz();
     const listingRating = faker.random.number({ min: 4, max: 5, precision: 0.5 });
@@ -32,11 +33,11 @@ const listingsDataGen = (records) => {
     };
     listings.push(listingEntry);
 
-    if (i === 1000) {
+    if (i === (end / 4)) {
       console.log(i);
-    } else if (i === 10000) {
+    } else if (i === (end / 2)) {
       console.log(i);
-    } else if (i === records) {
+    } else if (i === end) {
       console.log('Records Created: ', i)
     }
   }
@@ -44,7 +45,7 @@ const listingsDataGen = (records) => {
 };
 
 const csvWriter = createCsvWriter({
-  path: "./sample_csv/listings.csv",
+  path: "./csv/listings.csv",
   header: [
     { id: "listing_id", title: "listing_id" },
     { id: "title", title: "title" },
@@ -60,11 +61,11 @@ const csvWriter = createCsvWriter({
   ],
 });
 
-const listingsData = listingsDataGen(recordsFile.listingRecords);
+const listingsData = listingsDataGen(postgreSQLSeed.listingStart, postgreSQLSeed.listingEnd);
 
 csvWriter.writeRecords(listingsData)
   .then(() => {
-    console.log("path: ./sample_csv/listings.csv");
+    console.log("path: ./seed/postgres/csv/listings.csv");
     console.log("listingsDataGen.js Almost Complete!");
     console.log("listingsDataGen.js Generated!");
   })

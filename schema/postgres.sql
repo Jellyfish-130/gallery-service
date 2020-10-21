@@ -50,13 +50,33 @@ CREATE TABLE gallery_service.photos (
   listing_id integer not null references gallery_service.listings(listing_id),
   room_id integer not null references gallery_service.rooms(room_id),
   photo_url text,
-  photo_caption varchar(100)
+  photo_caption varchar(500)
 );
 
-COPY gallery_service.listings (listing_id, title, listing_name, rating, num_reviews, superhost, listing_location, hostname, host_avatar_url, share, save_feature) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/sample_csv/listings.csv' WITH CSV HEADER DELIMITER ',';
 
-COPY gallery_service.feature_photos (feature_photo_id, listing_id, photo_1_url, photo_2_url) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/sample_csv/feature_photos.csv' WITH CSV HEADER DELIMITER ',';
+COPY gallery_service.listings (listing_id, title, listing_name, rating, num_reviews, superhost, listing_location, hostname, host_avatar_url, share, save_feature) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/csv/listings.csv' WITH CSV HEADER DELIMITER ',';
 
-COPY gallery_service.rooms (room_id, listing_id, room_name) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/sample_csv/rooms.csv' WITH CSV HEADER DELIMITER ',';
+COPY gallery_service.feature_photos (feature_photo_id, listing_id, photo_1_url, photo_2_url) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/csv/feature_photos.csv' WITH CSV HEADER DELIMITER ',';
 
-COPY gallery_service.photos (photo_id, listing_id, room_id, photo_url, photo_caption) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/sample_csv/photos.csv' WITH CSV HEADER DELIMITER ',';
+COPY gallery_service.rooms (room_id, listing_id, room_name) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/csv/rooms.csv' WITH CSV HEADER DELIMITER ',';
+
+COPY gallery_service.photos (photo_id, listing_id, room_id, photo_url, photo_caption) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/csv/photos.csv' WITH CSV HEADER DELIMITER ',';
+COPY gallery_service.photos (photo_id, listing_id, room_id, photo_url, photo_caption) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/csv/photos1.csv' WITH CSV HEADER DELIMITER ',';
+COPY gallery_service.photos (photo_id, listing_id, room_id, photo_url, photo_caption) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/csv/photos2.csv' WITH CSV HEADER DELIMITER ',';
+COPY gallery_service.photos (photo_id, listing_id, room_id, photo_url, photo_caption) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/csv/photos3.csv' WITH CSV HEADER DELIMITER ',';
+COPY gallery_service.photos (photo_id, listing_id, room_id, photo_url, photo_caption) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/csv/photos4.csv' WITH CSV HEADER DELIMITER ',';
+COPY gallery_service.photos (photo_id, listing_id, room_id, photo_url, photo_caption) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/csv/photos5.csv' WITH CSV HEADER DELIMITER ',';
+COPY gallery_service.photos (photo_id, listing_id, room_id, photo_url, photo_caption) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/csv/photos6.csv' WITH CSV HEADER DELIMITER ',';
+COPY gallery_service.photos (photo_id, listing_id, room_id, photo_url, photo_caption) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/csv/photos7.csv' WITH CSV HEADER DELIMITER ',';
+COPY gallery_service.photos (photo_id, listing_id, room_id, photo_url, photo_caption) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/csv/photos8.csv' WITH CSV HEADER DELIMITER ',';
+COPY gallery_service.photos (photo_id, listing_id, room_id, photo_url, photo_caption) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/csv/photos9.csv' WITH CSV HEADER DELIMITER ',';
+COPY gallery_service.photos (photo_id, listing_id, room_id, photo_url, photo_caption) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/csv/photos10.csv' WITH CSV HEADER DELIMITER ',';
+COPY gallery_service.photos (photo_id, listing_id, room_id, photo_url, photo_caption) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/csv/photos11.csv' WITH CSV HEADER DELIMITER ',';
+COPY gallery_service.photos (photo_id, listing_id, room_id, photo_url, photo_caption) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/csv/photos12.csv' WITH CSV HEADER DELIMITER ',';
+COPY gallery_service.photos (photo_id, listing_id, room_id, photo_url, photo_caption) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/csv/photos13.csv' WITH CSV HEADER DELIMITER ',';
+COPY gallery_service.photos (photo_id, listing_id, room_id, photo_url, photo_caption) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/csv/photos14.csv' WITH CSV HEADER DELIMITER ',';
+COPY gallery_service.photos (photo_id, listing_id, room_id, photo_url, photo_caption) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/csv/photos15.csv' WITH CSV HEADER DELIMITER ',';
+COPY gallery_service.photos (photo_id, listing_id, room_id, photo_url, photo_caption) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/csv/photos16.csv' WITH CSV HEADER DELIMITER ',';
+COPY gallery_service.photos (photo_id, listing_id, room_id, photo_url, photo_caption) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/csv/photos17.csv' WITH CSV HEADER DELIMITER ',';
+COPY gallery_service.photos (photo_id, listing_id, room_id, photo_url, photo_caption) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/csv/photos18.csv' WITH CSV HEADER DELIMITER ',';
+COPY gallery_service.photos (photo_id, listing_id, room_id, photo_url, photo_caption) FROM '/Users/limnhep/Desktop/1. SEI Aug Immersive/HRSF-backend-capstone/gallery-service/seed/postgres/csv/photos19.csv' WITH CSV HEADER DELIMITER ',';
