@@ -1,4 +1,9 @@
-node_modules
+# Ignore node-modules
 node_modules
 
-/client/dist/bundle.js
+# Ignore bundle.js file
+client/dist/bundle.js
+
+# Ignore .csv files that contain seeded records
+*.csv
+seed/postgres/csv/

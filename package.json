@@ -6,15 +6,24 @@
     "test": "jest",
     "start": "nodemon server.js",
     "seed": "node database/seed_database.js",
-    "build": "cd client && npm run build"
+    "build": "cd client && npm run build",
+    "create-listings": "cd seed/postgres/ && node listingsDataGen.js",
+    "create-feature-photos": "cd seed/postgres/ && node featurePhotosDataGen.js",
+    "create-rooms": "cd seed/postgres/ && node roomsDataGen.js",
+    "create-photos": "cd seed/postgres/ && node photosDataGen.js",
+    "seed-postgres": "cd schema && psql -h localhost -d gallery_service -U sdc_user -p 5432 -a -q -f postgres.sql"
   },
-  "author": "Harris Li",
+  "frontend-author": "Harris Li",
+  "backend-author": "Lim E. Nhep",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
+    "csv-write-stream": "^2.0.0",
+    "csv-writer": "^1.6.0",
     "express": "^4.17.1",
+    "faker": "^5.1.0",
     "mongoose": "^5.10.9",
     "nodemon": "^2.0.4"
   },
