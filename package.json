@@ -7,11 +7,16 @@
     "start": "nodemon server.js",
     "seed": "node database/seed_database.js",
     "build": "cd client && npm run build",
-    "create-listings": "cd seed/postgres/ && node listingsDataGen.js",
-    "create-feature-photos": "cd seed/postgres/ && node featurePhotosDataGen.js",
-    "create-rooms": "cd seed/postgres/ && node roomsDataGen.js",
-    "create-photos": "cd seed/postgres/ && node photosDataGen.js",
-    "seed-postgres": "cd schema && psql -h localhost -d gallery_service -U sdc_user -p 5432 -a -q -f postgres.sql"
+    "postgres-listings": "cd seed/postgres/ && node listingsDataGen.js",
+    "postgres-feature-photos": "cd seed/postgres/ && node featurePhotosDataGen.js",
+    "postgres-rooms": "cd seed/postgres/ && node roomsDataGen.js",
+    "postgres-photos": "cd seed/postgres/ && node photosDataGen.js",
+    "seed-postgres": "cd schema && psql -h localhost -d gallery_service -U sdc_user -p 5432 -a -q -f postgres.sql",
+    "cassandra-listings": "cd seed/cassandra/ && node listingsDataGen.js",
+    "cassandra-feature-photos": "cd seed/cassandra/ && node featurePhotosDataGen.js",
+    "cassandra-photos": "cd seed/cassandra/ && node photosDataGen.js",
+    "seed-cassandra": "cd schema && cqlsh -f cassandra.cql",
+    "new-server": "nodemon server/server.js"
   },
   "frontend-author": "Harris Li",
   "backend-author": "Lim E. Nhep",
@@ -25,7 +30,10 @@
     "express": "^4.17.1",
     "faker": "^5.1.0",
     "mongoose": "^5.10.9",
-    "nodemon": "^2.0.4"
+    "newrelic": "^6.13.2",
+    "nodemon": "^2.0.4",
+    "pg": "^8.4.1",
+    "router": "^1.3.5"
   },
   "devDependencies": {},
   "repository": {

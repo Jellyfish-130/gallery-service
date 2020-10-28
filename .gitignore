@@ -7,3 +7,6 @@ client/dist/bundle.js
 # Ignore .csv files that contain seeded records
 *.csv
 seed/postgres/csv/
+
+# Git Ignore New Relic Key
+newrelic.js
