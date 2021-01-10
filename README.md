@@ -27,6 +27,17 @@
 <p align="center">
 <img src="https://hackreactor-restaurant-images.s3-us-west-2.amazonaws.com/static-images/SDC+Img-3.png" width="75%"></p>
 
+## **Technologies / Frameworks Used** ##
+
+- PostgreSQL
+- Cassandra
+- Express.js
+- React
+- Node.js
+- Styled Components
+
+**Other Tools**: NGINIX, EC2, S3, Loader.io, New Relic, K6
+
 ## **API-CRUD-Operations**
 
 ## For Guests / Site Visitors:
