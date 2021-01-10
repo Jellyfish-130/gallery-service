@@ -87,7 +87,7 @@ Sucess Status Code: 201
 - Create / Post: `/listings/:listingId/add`
 - Path Parameters: `:listingId`
 
-```json
+```
 Request Body:
 
 {
@@ -106,7 +106,7 @@ Request Body:
 }
 ```
 
-```json
+```
 Response Object:
 
 {
@@ -120,7 +120,7 @@ Response Object:
 - Create / Post: `/listings/:listingId/photos/add`
 - Path Parameters: `:listingId`
 
-```json
+```
 Request Body:
 
 {
@@ -129,7 +129,7 @@ Request Body:
 
 ```
 
-```json
+```
 Response Object:
 
   Success Status Code: 200
@@ -140,7 +140,7 @@ Response Object:
 - READ / GET: `/listings/:listingId`
 - Path Parameter(s): none
 
-```json
+```
 {
   listingID: number,
   title: string,
@@ -173,7 +173,7 @@ Response Object:
 }
 ```
 
-```json
+```
 Response Object:
 
   Success Status Code: 200
@@ -184,7 +184,7 @@ Response Object:
 - Update / Put: `/listings/:listingId/photos/:photoId/update`
 - Path Parameters: `:listingId, :photoId`
 
-```json
+```
 Request Body:
 
 {
@@ -192,7 +192,7 @@ Request Body:
 }
 ```
 
-```json
+```
 Response Object:
 
   Success Status Code: 201
@@ -203,13 +203,13 @@ Response Object:
 - Delete / Delete `/listings/:listingId/photos/:photoId`
 - Path Parameters `:listingId, :photoId`
 
-```json
+```
 Request Body:
 
   None
 ```
 
-```json
+```
 Request Object:
 
   Sucess Status Code: 204
