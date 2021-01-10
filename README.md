@@ -117,7 +117,7 @@ Response Object:
 
 ### Add photo(s) to a `listing`
 
-- Create / Post: `/listings/:listingId/photos/add`
+- CREATE / POST: `/listings/:listingId/photos/add`
 - Path Parameters: `:listingId`
 
 ```
@@ -181,7 +181,7 @@ Response Object:
 
 ### Update photo(s) to `photos` for a `listing`
 
-- Update / Put: `/listings/:listingId/photos/:photoId/update`
+- UPDATE / PUT: `/listings/:listingId/photos/:photoId/update`
 - Path Parameters: `:listingId, :photoId`
 
 ```
@@ -200,7 +200,7 @@ Response Object:
 
 ### Delete a photo from `photos` from a `listing`
 
-- Delete / Delete `/listings/:listingId/photos/:photoId`
+- DELETE / DELETE `/listings/:listingId/photos/:photoId`
 - Path Parameters `:listingId, :photoId`
 
 ```
