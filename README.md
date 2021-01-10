@@ -11,7 +11,7 @@
 ## **Table of Contents**
 
 - [Client Demo](#demo)
-- [Endpoints Documentations](#API-CRUD-Operations)
+- [API Endpoints Documentations](#API-CRUD-Operations)
 - [Installing Dependencies](#dependencies)
 - [Getting Started](#development)
 - [Getting Deployed](#usage)
