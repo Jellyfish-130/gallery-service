@@ -1,21 +1,33 @@
 # **Jellyfish-130 - Gallery Module Optimization, System Design**
 
-## **Site Optimization**
+## **Site Optimization Overview**
 
 - Identified system bottlenecks, modified system configurations, added an NGINX load balancer, cached the data, and horizontally scaled a heavily READ / GET backend to reduce latency.
   - Results:
     - Increased read throughput by 57%
     - Reduced response times to an avarege of ~83ms for image retrieval operations while maintaining a 0% error rate for 1,750 requests per second, or ~105,000 requests per minute
-      - Data of the stress test in Loader.io: https://bit.ly/2HO2Szs
+      - Stress test data in Loader.io: https://bit.ly/2HO2Szs
 
 ## **Table of Contents**
 
-- API Endpoints / CRUD Operations
+- [Client Demo](#demo)
+- [Endpoints Documentations](#API-CRUD-Operations)
 - [Installing Dependencies](#dependencies)
 - [Getting Started](#development)
 - [Getting Deployed](#usage)
 
-## **API Endpoints / CRUD Operations**
+## **Demo**
+
+<p align="center">
+<img src="https://hackreactor-restaurant-images.s3-us-west-2.amazonaws.com/static-images/SDC+Img-1.png" width="75%"></p>
+
+<p align="center">
+<img src="https://hackreactor-restaurant-images.s3-us-west-2.amazonaws.com/static-images/SDC+Img-2.png" width="75%"></p>
+
+<p align="center">
+<img src="https://hackreactor-restaurant-images.s3-us-west-2.amazonaws.com/static-images/SDC+Img-3.png" width="75%"></p>
+
+## **API-CRUD-Operations**
 
 ## For Guests / Site Visitors:
 
@@ -113,6 +125,7 @@ Response Object:
   listingId: number
 }
 
+Success Status Code: 201
 ```
 
 ### Add photo(s) to a `listing`
@@ -236,13 +249,13 @@ From within the root directory:
 To run dev environment/webpack
 
 ```sh
-npm run build-dev
+npm run build
 ```
 
 To run server
 
 ```sh
-npm start-dev
+npm start
 ```
 
 To seed database
