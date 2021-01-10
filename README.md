@@ -1,134 +1,237 @@
-# Jelly-Fish
+# **Jellyfish-130 - Gallery Module Optimization, System Design**
 
-> System Design Capstone Project. This is the back-end capstone design project for the gallery service component of a premium home rental web application.
+## **Site Optimization**
 
-## Related Projects
+- Identified system bottlenecks, modified system configurations, added an NGINX load balancer, cached the data, and horizontally scaled a heavily READ / GET backend to reduce latency.
+  - Results:
+    - Increased read throughput by 57%
+    - Reduced response times to an avarege of ~83ms for image retrieval operations while maintaining 0% error rate for 1,750 requests per second, or ~105,000 requests per minute
+      - Data of the stress test in Loader.io: https://bit.ly/2HO2Szs
 
-- Lim E. Nhep - https://github.com/Jellyfish-130/gallery-service
-- Catherine Straus - https://github.com/Jellyfish-130/calendar-service
-- Jacob Johnson - https://github.com/Jellyfish-130/review-service
-- Arun Kambivalappil - https://github.com/Jellyfish-130/more-places-service
+## **Table of Contents**
 
-## Table of Contents
+- API Endpoints / CRUD Operations
+- [Installing Dependencies](#dependencies)
+- [Getting Started](#development)
+- [Getting Deployed](#usage)
 
-1. [API-Endpoints](#API-Endpoints)
-2. [Usage](#Usage)
-3. [Requirements](#requirements)
-4. [Development](#development)
+## **API Endpoints / CRUD Operations**
 
-## API-Endpoints
+## For Guests / Site Visitors:
 
-> See below for the detailed breakdown.
+### Get all `listings` on the platform upon ComponentDidMount()
 
-### Add a specific listing to `listings`
+- READ / GET: `/listings`
+- Path Parameter(s): none
 
-- POST `/api/listings`
+```
+Request Body:
 
-**Success Status Code:** `201`
+  None
+```
 
-**Returns:** JSON
+```
+Response object:
+
+{
+  [
+    {
+    listingID: number,
+    title: string,
+    location: string,
+    description: string,
+    quote: string,
+    hostname: string,
+    rating: string,
+    guests: number,
+    bedrooms: number,
+    beds: number,
+    bathrooms: number,
+    superhost: boolean,
+    reviews: array,
+    gallery: object {
+        featured: array [],
+        rooms: [
+          {
+            name: string,
+            amenities: array [],
+            images: array [
+              object {
+                url: string,
+                comment: string
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      ... second listing object
+    },
+    {
+      ... third listing object
+    },
+    {
+      ... so on
+    },
+  ]
+}
+
+Sucess Status Code: 201
+```
+
+## For Hosts / Listers:
+
+### Add a listing to `listings`
+
+- Create / Post: `/listings/:listingId/add`
+- Path Parameters: `:listingId`
 
 ```json
+Request Body:
+
 {
-    ...REQUEST BODY
+      listingID: number,
+      title: string,
+      location: string,
+      description: string,
+      quote: string,
+      hostname: string,
+      rating: string,
+      guests: number,
+      bedrooms: number,
+      beds: number,
+      bathrooms: number,
+      superhost: boolean
 }
 ```
 
-### Get all `listings`
+```json
+Response Object:
 
-- GET `/api/listings`
+{
+  listingId: number
+}
 
-**Success Status Code:** `200`
+```
 
-***Example*
+### Add photo(s) to a `listing`
 
-`/api/listings/...`
+- Create / Post: `/listings/:listingId/photos/add`
+- Path Parameters: `:listingId`
 
-**Returns:** JSON
+```json
+Request Body:
+
+{
+  images: array []
+}
+
+```
+
+```json
+Response Object:
+
+  Success Status Code: 200
+```
+
+### Get a `listing` on the platform
+
+- READ / GET: `/listings/:listingId`
+- Path Parameter(s): none
 
 ```json
 {
-  ...
+  listingID: number,
+  title: string,
+  location: string,
+  description: string,
+  quote: string,
+  hostname: string,
+  rating: string,
+  guests: number,
+  bedrooms: number,
+  beds: number,
+  bathrooms: number,
+  superhost: boolean,
+  reviews: array [],
+  gallery: object {
+      featured: [],
+      rooms: [
+        {
+          name: string,
+          amenities: array [],
+          images: array [
+            object {
+              url: string,
+              comment: string
+            }
+          ]
+        }
+      ]
+    }
 }
 ```
-
-### Get a specific listing from `listings`
-
-- GET `/api/listings/:listing_id`
-
-**Path Parameters:**
-
-- `listing_id` listing id
-
-**Success Status Code:** `200`
-
-**Returns:** JSON
 
 ```json
-{
-  ...
-}
+Response Object:
+
+  Success Status Code: 200
 ```
 
-### Update a specific photo to `listings`
+### Update photo(s) to `photos` for a `listing`
 
-- PATCH `/api/listings/:listing_id/photos/:photo_id`
-
-**Path Parameters:**
-
-- `listings_id` listing id
-- `photo_id` photo id
-
-**Success Status Code:** `200`
-
-**Request Body:** JSON
+- Update / Put: `/listings/:listingId/photos/:photoId/update`
+- Path Parameters: `:listingId, :photoId`
 
 ```json
+Request Body:
+
 {
-   ...REQUEST BODY
+  url: string
 }
 ```
-
-### Delete a specific photo from `listings`
-
-- DELETE `/api/listings/:listing_id/photos/:photo_id`
-
-**Path Parameters:**
-
--`listing_id` listing id
--`photo_id` photo id
-
-**Success Status Code:** `204`
-
-**Returns:** JSON
 
 ```json
-{
-  "success": true,
-  "deletedCount": 1
-}
+Response Object:
+
+  Success Status Code: 201
 ```
-## Usage
 
-> Some usage instructions.
+### Delete a photo from `photos` from a `listing`
 
-To get the Gallery Module, run http://localhost:3001/.
+- Delete / Delete `/listings/:listingId/photos/:photoId`
+- Path Parameters `:listingId, :photoId`
 
-## Requirements
+```json
+Request Body:
+
+  None
+```
+
+```json
+Request Object:
+
+  Sucess Status Code: 204
+```
+
+## **Dependencies**
+
+From within the root directory:
+
+```sh
+npm install
+```
+
+## **Requirements**
 
 - Node 10.5.0
 - npm 6.14.7
 - MongoDB 4.2.8
 
-## Development
+## **Development**
 
 From within the root directory:
-
-To install dependencies
-
-```sh
-npm install
-```
 
 To run dev environment/webpack
 
@@ -140,13 +243,6 @@ To run server
 
 ```sh
 npm start-dev
-```
-
-To run MongoDB -- TBD
-
-```sh
-# mkdir data
-# mongod --dbpath data
 ```
 
 To seed database
@@ -161,10 +257,7 @@ To run tests
 npm run test
 ```
 
-### Installing Dependencies
+## **Usage**
 
-From within the root directory:
+To get started with the Gallery Module, run http://localhost:3001/ on your local web browser.
 
-```sh
-npm install
-```
