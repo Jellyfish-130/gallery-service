@@ -2,8 +2,8 @@
 
 ## **Site Optimization Overview**
 
-- Identified system bottlenecks, modified system configurations, added an NGINX load balancer, cached the data, and horizontally scaled a heavily READ / GET backend to reduce latency.
-  - Results:
+- Identified system bottlenecks, modified system configurations, added an NGINX load balancer, cached the data, and horizontally scaled a heavily READ / GET backend with 60 million data records to reduce latency.
+  - Resulted in:
     - Increased read throughput by 57%
     - Reduced response times to an avarege of ~83ms for image retrieval operations while maintaining a 0% error rate for 1,750 requests per second, or ~105,000 requests per minute
       - Stress test data in Loader.io: https://bit.ly/2HO2Szs
