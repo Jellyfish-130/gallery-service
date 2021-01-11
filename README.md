@@ -15,6 +15,7 @@
 - [Installing Dependencies](#dependencies)
 - [Getting Started](#development)
 - [Getting Deployed](#usage)
+- [Database Schema Design](#PostgreSQL)
 
 ## **Demo**
 
@@ -285,3 +286,86 @@ npm run test
 
 To get started with the Gallery Module, run http://localhost:3001/ on your local web browser.
 
+## **Database Schema Design**
+
+### **PostgreSQL:**
+
+```sh
+CREATE SCHEMA gallery_service;
+
+CREATE TABLE gallery_service.listings (
+  listing_id SERIAL PRIMARY KEY,
+  title varchar(55),
+  listing_name varchar(55),
+  rating varchar(4),
+  num_reviews smallint not null,
+  superhost boolean,
+  listing_location varchar(55),
+  hostname varchar(55),
+  host_avatar_url text,
+  share boolean,
+  save_feature boolean
+);
+
+CREATE TABLE gallery_service.feature_photos (
+  feature_photo_id SERIAL PRIMARY KEY,
+  listing_id integer not null references gallery_service.listings(listing_id),
+  photo_1_url text,
+  photo_2_url text
+);
+
+CREATE TABLE gallery_service.rooms (
+  room_id SERIAL PRIMARY KEY,
+  listing_id integer not null references gallery_service.listings(listing_id),
+  room_name varchar(55)
+);
+
+CREATE TABLE gallery_service.photos (
+  photo_id SERIAL PRIMARY KEY,
+  listing_id integer not null references gallery_service.listings(listing_id),
+  room_id integer not null references gallery_service.rooms(room_id),
+  photo_url text,
+  photo_caption varchar(500)
+);
+```
+
+### **Cassandra:**
+
+```sh
+CREATE KEYSPACE gallery_service WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 } AND durable_writes = 'true';
+
+USE gallery_service;
+
+CREATE TABLE listings_by_id (
+  listing_id int,
+  listing_title text,
+  listing_name text,
+  listing_rating decimal,
+  num_reviews int,
+  superhost boolean,
+  listing_location text,
+  hostname text,
+  host_avatar_url text,
+  share boolean,
+  save_feature boolean,
+  PRIMARY KEY(listing_id)
+);
+
+CREATE TABLE feature_photos_by_listings_id (
+  listing_id int,
+  feature_photo_id int,
+  photo_1_url text,
+  photo_2_url text,
+  PRIMARY KEY(listing_id, feature_photo_id)
+);
+
+CREATE TABLE photos_by_listing_id (
+  listing_id int,
+  room_id int,
+  photo_id int,
+  room_name text,
+  photo_url text,
+  photo_caption text,
+  PRIMARY KEY(listing_id, room_id)
+);
+```
