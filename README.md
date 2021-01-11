@@ -1,6 +1,6 @@
-# **Jellyfish-130 - Gallery Module Optimization, System Design**
+# **Jellyfish-130 App Optimization System Design**
 
-## **Site Optimization Overview**
+## **Optimization Overview**
 
 - Identified system bottlenecks, modified system configurations, added an NGINX load balancer, cached the data, and horizontally scaled a heavily READ / GET backend with 60 million data records to reduce latency.
   - Resulted in:
