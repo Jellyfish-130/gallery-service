@@ -2,7 +2,7 @@
 
 ## **Optimization Overview**
 
-- Identified system bottlenecks, modified system configurations, added an NGINX load balancer, cached the data, indexed relational keys, and horizontally scaled a heavily READ / GET backend to handle network request and reduce latency for a 60 million records PostgreSQL database.
+- Identified system bottlenecks, modified system configurations, added an NGINX load balancer, cached the data, indexed relational keys, and horizontally scaled a heavily READ / GET backend to handle network requests and reduce latency for a 60 million records PostgreSQL database.
   - Resulted in:
     - Increased read throughput by 57%
     - Reduced response times to an avarege of ~83ms for image retrieval operations while maintaining a 0% error rate for 1,750 requests per second, or ~105,000 requests per minute
@@ -108,8 +108,8 @@ Sucess Status Code: 201
 
 ### Add a listing to `listings`
 
-- Create / Post: `/listings/:listingId/add`
-- Path Parameters: `:listingId`
+- Create / Post: `/listings`
+- Path Parameter(s): none
 
 ```
 Request Body:
@@ -142,8 +142,8 @@ Success Status Code: 201
 
 ### Add photo(s) to a `listing`
 
-- CREATE / POST: `/listings/:listingId/photos/add`
-- Path Parameters: `:listingId`
+- CREATE / POST: `/listings/:listingId/photos/`
+- Path Parameter(s): `:listingId`
 
 ```
 Request Body:
@@ -206,8 +206,8 @@ Response Object:
 
 ### Update photo(s) to `photos` for a `listing`
 
-- UPDATE / PUT: `/listings/:listingId/photos/:photoId/update`
-- Path Parameters: `:listingId, :photoId`
+- UPDATE / PUT: `/listings/:listingId/photos/`
+- Path Parameter(s): `:listingId`
 
 ```
 Request Body:
@@ -226,7 +226,7 @@ Response Object:
 ### Delete a photo from `photos` from a `listing`
 
 - DELETE / DELETE `/listings/:listingId/photos/:photoId`
-- Path Parameters `:listingId, :photoId`
+- Path Parameter(s): `:listingId, :photoId`
 
 ```
 Request Body:
